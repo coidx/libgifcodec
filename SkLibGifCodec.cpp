@@ -129,12 +129,7 @@ bool SkLibGifCodec::onGetFrameInfo(int i, SkCodec::FrameInfo* frameInfo) const {
     SkASSERT(frameContext->reachedStartOfData());
 
     if (frameInfo) {
-        frameInfo->fDuration = frameContext->getDuration();
-        frameInfo->fRequiredFrame = frameContext->getRequiredFrame();
-        frameInfo->fFullyReceived = frameContext->isComplete();
-        frameInfo->fAlphaType = frameContext->hasAlpha() ? kUnpremul_SkAlphaType
-                                                         : kOpaque_SkAlphaType;
-        frameInfo->fDisposalMethod = frameContext->getDisposalMethod();
+        frameContext->fillIn(frameInfo, frameContext->isComplete());
     }
     return true;
 }
