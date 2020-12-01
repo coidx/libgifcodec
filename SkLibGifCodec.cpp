@@ -415,7 +415,7 @@ void SkLibGifCodec::haveDecodedRow(int frameIndex, const unsigned char* rowBegin
     const int xBegin = frameContext->xOffset();
     const int yBegin = frameContext->yOffset() + rowNumber;
     const int xEnd = std::min(xBegin + width, this->dimensions().width());
-    const int yEnd = std::min(yBegin + rowNumber + repeatCount, this->dimensions().height());
+    const int yEnd = std::min(yBegin + repeatCount, this->dimensions().height());
     // FIXME: No need to make the checks on width/xBegin/xEnd for every row. We could instead do
     // this once in prepareToDecode.
     if (!width || (xBegin < 0) || (yBegin < 0) || (xEnd <= xBegin) || (yEnd <= yBegin))
